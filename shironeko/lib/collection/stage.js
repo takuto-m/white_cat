@@ -1,1 +1,1 @@
-Posts = new Mongo.Collection('stage');
+Stage = new Mongo.Collection('stage');

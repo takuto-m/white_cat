@@ -1,9 +1,16 @@
 <template name="layout">
   <div class="container">
     {{> header}}
-    <div id="main" class="row-fluid">
-      {{> yield}}
-    </div>
+    <!--div id="main" class="row-fluid"-->
+      <div class="sidebar">
+        <div class="side-menu">
+          {{> sidebar}}
+        </div>
+      </div>
+      <div class="contents-buffer">
+        <div class="contents">
+          {{> yield}}
+        </div>
+      </div>
   </div>
 </template>
-

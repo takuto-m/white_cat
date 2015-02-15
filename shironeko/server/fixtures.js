@@ -15,7 +15,6 @@ if (Posts.find().count() === 0) {
   });
 }
 
-/*
 if (Stage.find().count() === 0) {
   Stage.insert({
     title: '草原',
@@ -132,4 +131,3 @@ if (Stage.find().count() === 0) {
     stage_id: 200
   });
 }
-*/

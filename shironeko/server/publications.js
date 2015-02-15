@@ -2,8 +2,6 @@ Meteor.publish('posts', function() {
   return Posts.find();
 });
 
-/*
-Stage.publish('stage', function() {
+Meteor.publish('stage', function() {
   return Stage.find();
 });
-*/

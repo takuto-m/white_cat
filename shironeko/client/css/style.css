@@ -1,4 +1,4 @@
-.grid-block, .main, .post, .comments li, .comment-form {
+.grid-block, .main, .side-menu, .post, .comments li, .comment-form {
   background: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -163,3 +163,78 @@ body {
   pointer-events: auto;
 }
 
+.container {
+    width                   : 95%;
+    overflow                : hidden;
+}
+
+/*
+ * .contents-buffer と .contents と言う 2 種類の div タグを用いて、
+ * メインコンテンツ側のカラムのスタイルを定義する。
+ */
+.contents-buffer {
+    width                   : 70%;
+    float                   : right;
+    margin                  : 10px 0
+    border                  : 0;
+}
+
+.contents {
+    margin                  : 1em;
+    padding                 : 0;
+    border                  : 0;
+    position                : relative;
+    overflow                : hidden;
+}
+
+/* サイドバー側のカラムは 250px の固定幅 */
+.sidebar {
+    width                   : 250px;
+    float                   : left;
+    display                 : inline;
+    margin                  : 1em 0;
+    padding                 : 0;
+    border                  : 0;
+    position                : relative;
+    overflow                : hidden;
+}
+
+@media screen and (max-device-width:480px) {
+    body, table, input, textarea, address {
+        line-height             : 1.4;
+        color                   : #222222;
+    }
+
+    .container {
+        width                   : 99%;
+    }
+
+    .contents-buffer {
+        display                 : block;
+        width                   : 100%;
+        margin                  : 0;
+        padding                 : 0;
+        border                  : 0;
+    }
+
+    .contents {
+        margin                  : 1em;
+        padding                 : 0;
+        border                  : 0;
+    }
+
+    .sidebar {
+        display                 : block;
+        width                   : 100%;
+        margin                  : 0;
+        padding                 : 0;
+        border                  : 0;
+    }
+}
+
+.sub-menu {
+  font-size: 1.4em;
+  background: #ecf0f1;
+  padding: 10px 10px;
+  margin: 2px 0;
+}
