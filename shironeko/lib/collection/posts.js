@@ -9,6 +9,15 @@ Posts.allow({
 });
 */
 
+Posts.allow({
+  insert: function(userId, doc) {
+    // only allow posting if you are logged in
+    console.log(doc);
+    return true;
+    // return !! userId;
+  }
+});
+
 Meteor.methods({
   postInsert: function(postAttributes) {
     check(postAttributes, {

@@ -1,4 +1,4 @@
-.grid-block, .main, .side-menu, .post, .comments li, .comment-form {
+.grid-block, .main, .side-menu, .post, .comments ul, .comment-form {
   background: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -79,17 +79,29 @@ body {
 
 .comments {
   list-style-type: none;
-  margin: 0; }
-  .comments li h4 {
-    font-size: 16px;
-    margin: 0; }
-    .comments li h4 .date {
-      font-size: 12px;
-      font-weight: normal; }
-    .comments li h4 a {
-      font-size: 12px; }
-  .comments li p:last-child {
-    margin-bottom: 0; }
+  -webkit-padding-start: 0px;
+  margin-top: 1em; }
+  .comments li {
+    list-style-type: none;
+    list-style-position: outside;
+  }
+    .comments li ul {
+      padding: 5px;
+      list-style-type: none;
+      list-style-position: inside;
+    }
+      .comments li ul li  {
+        list-style-type: none;
+        list-style-position: outside;
+      }
+        .comments li ul li.time {
+          float: left;
+          width: 80px;
+        }
+        .comments li ul li.comment {
+          width: 100%;
+          padding-left: 80px;
+        }
 
 .dropdown-menu span {
   display: block;
@@ -173,16 +185,16 @@ body {
  * メインコンテンツ側のカラムのスタイルを定義する。
  */
 .contents-buffer {
-    width                   : 70%;
-    float                   : right;
-    margin                  : 10px 0
+    width                   : 100%;
+    padding-left            : 250px;
     border                  : 0;
 }
 
 .contents {
-    margin                  : 1em;
     padding                 : 0;
     border                  : 0;
+    margin                  : 1em;
+    margin-right            : 0em;
     position                : relative;
     overflow                : hidden;
 }
@@ -192,11 +204,22 @@ body {
     width                   : 250px;
     float                   : left;
     display                 : inline;
-    margin                  : 1em 0;
     padding                 : 0;
     border                  : 0;
     position                : relative;
     overflow                : hidden;
+}
+
+.side-menu {
+    margin-top: 0.25em;
+}
+
+.navbar-toggle {
+  display: none;
+}
+
+.sp-menu {
+  visibility: hidden;
 }
 
 @media screen and (max-device-width:480px) {
@@ -205,6 +228,13 @@ body {
         color                   : #222222;
     }
 
+    .sp-menu {
+      visibility                : visible;
+    }
+
+    .navbar-toggle {
+      display                   : block;
+    }
     .container {
         width                   : 99%;
     }
@@ -224,7 +254,7 @@ body {
     }
 
     .sidebar {
-        display                 : block;
+        display                 : none;
         width                   : 100%;
         margin                  : 0;
         padding                 : 0;

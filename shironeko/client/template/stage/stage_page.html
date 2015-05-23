@@ -1,3 +1,11 @@
 <template name="stagePage">
-  {{> stageItem}}
+  <div class="main">
+    <div class="sub-menu">{{title}}</div>
+    <div id="spinner">{{> spinner}}</div>
+    <div>
+      <ul id="comments" class="comments">
+        {{comments}}
+      </ul>
+    </div>
+  </div>
 </template>
