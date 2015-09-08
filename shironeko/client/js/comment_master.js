@@ -79,7 +79,7 @@
 
 CommentMaster.prototype.getCommentFromUltimate = function(stageId) {
   var getElapsedTime = function(count, timeText) {
-    var elapsedTime = parseInt(timeText);
+    var elapsedTime = parseInt(timeText, 10);
     if (isNaN(elapsedTime)) {
       elapsedTime = 0;
     } else if (0 < timeText.indexOf("分")) {
@@ -107,6 +107,49 @@ CommentMaster.prototype.getCommentFromUltimate = function(stageId) {
       for (var i = 0, len = Math.min(commentArray.length, 10); i < len; ++i) {
         var elapsedTime = getElapsedTime(i, timeArray[i].innerText);
         that.append({comment:commentArray[i].innerText, time:elapsedTime});
+      }
+
+      that.setSpinnerEnabled(false);
+      that.render();
+    }
+  });
+}
+
+CommentMaster.prototype.getCommentFromGamerch = function(stageId) {
+  var getElapsedTime = function(count, timeText) {
+    var elapsedTime = parseInt(timeText, 10);
+    if (isNaN(elapsedTime)) {
+      elapsedTime = 0;
+    } else if (0 < timeText.indexOf("分")) {
+      elapsedTime *= 60;
+    } else if (0 < timeText.indexOf("時間")) {
+      elapsedTime *= 3600;
+    } else if (0 < timeText.indexOf("日")) {
+      elapsedTime *= 3600;
+    }
+
+    elapsedTime += count;
+
+    return elapsedTime;
+  };
+  var that = this;
+
+  $.ajax({
+    url: 'http://shironekoproject.gamerch.com/' + stageId,
+    type: "GET",
+    success: function(res) {
+      var data = $(res.responseText).find("span .js_comment_return_to");
+      var commentArray = [];
+      var timeArray = [];
+
+      for (var i = 0, size = data.length; i < size; ++i) {
+        commentArray.push($(data[i]).find(".ui_child_comment_font span").html());
+        timeArray.push($(data[i]).find(".ui_comment_meta").html());
+      }
+
+      for (var i = 0, len = Math.min(commentArray.length, 10); i < len; ++i) {
+        var elapsedTime = getElapsedTime(i, timeArray[i]);
+        that.append({comment:commentArray[i], time:elapsedTime});
       }
 
       that.setSpinnerEnabled(false);
